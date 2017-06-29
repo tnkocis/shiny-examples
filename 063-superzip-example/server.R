@@ -51,8 +51,8 @@ function(input, output, session) {
 
     hist(zipsInBounds()$centile,
       breaks = centileBreaks,
-      main = "SuperZIP score (visible zips)",
-      xlab = "Percentile",
+      main = "Histogram Title",
+      xlab = "X Lavel",
       xlim = range(allzips$centile),
       col = '#00DD00',
       border = 'white')
