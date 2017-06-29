@@ -99,13 +99,14 @@ function(input, output, session) {
   showZipcodePopup <- function(zipcode, lat, lng) {
     selectedZip <- allzips[allzips$zipcode == zipcode,]
     content <- as.character(tagList(
-      tags$h4("Score:", as.integer(selectedZip$centile)),
+      tags$h4("Maybe Site ID?:", as.integer(selectedZip$centile)),
       tags$strong(HTML(sprintf("%s, %s %s",
         selectedZip$city.x, selectedZip$state.x, selectedZip$zipcode
       ))), tags$br(),
-      sprintf("Median household income: %s", dollar(selectedZip$income * 1000)), tags$br(),
-      sprintf("Percent of adults with BA: %s%%", as.integer(selectedZip$college)), tags$br(),
-      sprintf("Adult population: %s", selectedZip$adultpop)
+      # where median household income used to be
+      sprintf("Site Info: %s", dollar(selectedZip$income * 1000)), tags$br(),
+      sprintf("Site Info 2: %s%%", as.integer(selectedZip$college)), tags$br(),
+      sprintf("Site Info 3: %s", selectedZip$adultpop)
     ))
     leafletProxy("map") %>% addPopups(lng, lat, content, layerId = zipcode)
   }
