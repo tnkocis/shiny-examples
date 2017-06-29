@@ -25,10 +25,10 @@ navbarPage("Title for this Project", id="nav",
 
       # Shiny versions prior to 0.11 should use class="modal" instead.
       absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-        draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
+        draggable = TRUE, top = 20, left = "auto", right = 20, bottom = "auto",
         width = 330, height = "auto",
 
-        h2("ZIP explorer"),
+        h2("Site Manager"),
 
         selectInput("color", "Color", vars),
         selectInput("size", "Size", vars, selected = "adultpop"),
@@ -50,7 +50,7 @@ navbarPage("Title for this Project", id="nav",
   tabPanel("Data explorer",
     fluidRow(
       column(3,
-        selectInput("states", "States", c("All states"="", structure(state.abb, names=state.name), "Washington, DC"="DC"), multiple=TRUE)
+        selectInput("states", "States", c("All sites"="", structure(state.abb, names=state.name), "Washington, DC"="DC"), multiple=TRUE)
       ),
       column(3,
         conditionalPanel("input.states",
