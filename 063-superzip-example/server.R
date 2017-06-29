@@ -31,9 +31,11 @@ function(input, output, session) {
     if (is.null(input$map_bounds))
       return(zipdata[FALSE,])
     bounds <- input$map_bounds
-    latRng <- range(bounds$north, bounds$south)
-    lngRng <- range(bounds$east, bounds$west)
-
+    #latRng <- range(bounds$north, bounds$south)
+    #lngRng <- range(bounds$east, bounds$west)
+    latRng <- range(35.52079,40.60098)
+    lngRng <- range(-118.173689,-122.8436046)
+    
     subset(zipdata,
       latitude >= latRng[1] & latitude <= latRng[2] &
         longitude >= lngRng[1] & longitude <= lngRng[2])
