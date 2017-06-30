@@ -10,7 +10,7 @@ vars <- c(
 )
 
 
-navbarPage("Title for this Project", id="nav",
+navbarPage("Availability of high-magnitude streamflow for groundwater banking in the Central Valley, California", id="nav",
 
   tabPanel("Interactive map",
     div(class="outer",
