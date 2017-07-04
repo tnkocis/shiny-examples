@@ -42,8 +42,8 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
       ),
 
       tags$div(id="cite",
-        'Data compiled for ', tags$em('UC Davis Department of Land, Air and Water Resources (2017).'
-      )
+        'Data compiled for ', tags$em('UC Davis Depart of Land, Air and Water Resource, 2017') 
+      )  
     )
   ),
 
