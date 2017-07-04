@@ -76,7 +76,7 @@ function(input, output, session) {
       # Color and palette are treated specially in the "superzip" case, because
       # the values are categorical instead of continuous.
       #colorData <- ifelse(zipdata$centile >= (100 - input$threshold), "yes", "no")
-      colorData <- ifelse(zipdata$centile >= (100 - input$threshold))
+      colorData <- ifelse(zipdata$centile >= (100 - input$threshold), "yes")
       pal <- colorFactor("viridis", colorData)
     } else {
       colorData <- zipdata[[colorBy]]
