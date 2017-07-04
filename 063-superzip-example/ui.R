@@ -42,7 +42,7 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
       ),
 
       tags$div(id="cite",
-        'Data compiled for ', tags$em('Coming Apart: The State of White America, 1960–2010'), ' by Charles Murray (Crown Forum, 2012).'
+        'Data compiled for ', tags$em('UC Davis Department of Land, Air and Water Resources (2017).'
       )
     )
   ),
