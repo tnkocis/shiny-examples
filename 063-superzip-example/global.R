@@ -7,15 +7,15 @@ row.names(allzips) <- allzips$site_no
 
 cleantable <- allzips %>%
   select(
-    City = 0,
-    State = 0,
-    Zipcode = 0,
-    Rank = 0,
-    Score = 0,
-    Superzip = 0,
-    Population = 0,
-    College = 0,
-    Income = 0,
+    City = latitude,
+    State = latitude,
+    Zipcode = latitude,
+    Rank = latitude,
+    Score = latitude,
+    Superzip = latitude,
+    Population = latitude,
+    College = latitude,
+    Income = latitude,
     Lat = latitude,
     Long = longitude
   )
