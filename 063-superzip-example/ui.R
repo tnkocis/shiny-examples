@@ -25,7 +25,7 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
 
       # Shiny versions prior to 0.11 should use class="modal" instead.
       absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-        draggable = TRUE, resize = "both", top = 60, left = "auto", right = 20, bottom = "auto",
+        draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
         width = 330, height = "auto"
 
         h2("Site Manager"),
