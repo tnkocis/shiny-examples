@@ -37,7 +37,6 @@ h1, h2, h3, h4 { font-weight: 400; }
   /* Fade in while hovering */
   opacity: 0.95;
   transition-delay: 0;
-  resize: both;
 }
 
 /* Position and style citation */
@@ -45,7 +44,7 @@ h1, h2, h3, h4 { font-weight: 400; }
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 /* If not using map tiles, show a white background */
