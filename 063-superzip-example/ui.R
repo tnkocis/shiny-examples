@@ -26,7 +26,7 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
       # Shiny versions prior to 0.11 should use class="modal" instead.
       absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
         draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
-        width = 330, height = "auto", resize = "both",
+        width = 330, height = "auto",
 
         h2("Site Manager"),
 
@@ -38,7 +38,8 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
         ),
 
         plotOutput("histCentile", height = 200),
-        plotOutput("scatterCollegeIncome", height = 250)
+        plotOutput("scatterCollegeIncome", height = 250),
+        resize = "both"
       ),
 
       tags$div(id="cite",
