@@ -2,8 +2,8 @@ library(dplyr)
 
 allzips <- readRDS("data/superzip.rds")
 ourdata <- read.csv("data/gauge_locations.csv")
-allzips$latitude <- ourdata$latitude)
-allzips$longitude <- ourdata$longitude)
+allzips$latitude <- ourdata$latitude
+allzips$longitude <- ourdata$longitude
 allzips$college <- allzips$college * 100
 allzips$zipcode <- formatC(allzips$zipcode, width=5, format="d", flag="0")
 row.names(allzips) <- allzips$zipcode
