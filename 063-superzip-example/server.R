@@ -6,7 +6,7 @@ library(dplyr)
 
 # Leaflet bindings are a bit slow; for now we'll just sample to compensate
 set.seed(10)
-zipdata <- allzips[sample.int(nrow(allzips), 100),]
+zipdata <- allzips[sample.int(nrow(allzips), 94),]
 # By ordering by centile, we ensure that the (comparatively rare) SuperZIPs
 # will be drawn last and thus be easier to see
 #zipdata <- zipdata[order(zipdata$centile),]
