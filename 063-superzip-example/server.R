@@ -101,10 +101,9 @@ function(input, output, session) {
   showZipcodePopup <- function(zipcode, lat, lng) {
     selectedZip <- allzips[allzips$zipcode == zipcode,]
     content <- as.character(tagList(
-      #tags$h4("Maybe Site ID?:", as.integer(selectedZip$centile)),
-      tags$h4("Maybe FID?:"),
+      tags$h4("Site Number?:", as.integer(selectedZip$zipcode)),
       tags$strong(HTML(sprintf("%s, %s %s",
-        selectedZip$city.x, selectedZip$state.x, selectedZip$zipcode
+        selectedZip$latitude, selectedZip$longitude
       ))), tags$br(),
       # where median household income used to be
       sprintf("Site Info: %s", dollar(selectedZip$income * 1000)), tags$br(),
