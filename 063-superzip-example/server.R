@@ -101,7 +101,7 @@ function(input, output, session) {
   showZipcodePopup <- function(zipcode, lat, lng) {
     selectedZip <- allzips[allzips$zipcode == zipcode,]
     content <- as.character(tagList(
-      tags$h4("Site Number?:", as.integer(selectedZip$zipcode)),
+      #tags$h4("Site Number?:", as.integer(selectedZip$zipcode)),
       tags$strong(HTML(sprintf("%s, %s %s",
         selectedZip$latitude, selectedZip$longitude
       ))), tags$br(),
