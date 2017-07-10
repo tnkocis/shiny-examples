@@ -28,7 +28,7 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
         #draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
         #width = 330, height = "auto",
 
-        div(class="right"),
+        div(class="right",
             #Site Manager"),
 
         selectInput("color", "Color", vars),
