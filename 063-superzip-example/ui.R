@@ -13,7 +13,7 @@ vars <- c(
 navbarPage("Availability of high-magnitude streamflow for groundwater banking in the Central Valley, California", id="nav",
 
   tabPanel("Interactive map",
-    div(class="outer",
+    div(class="left",
 
       tags$head(
         # Include our custom CSS
