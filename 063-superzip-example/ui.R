@@ -24,12 +24,11 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
       leafletOutput("map", width="100%", height="100%"),
 
       # Shiny versions prior to 0.11 should use class="modal" instead.
-      #absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-        #draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
-        #width = 330, height = "auto",
+      absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
+        draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
+        width = 330, height = "auto",
 
-        div(class="right",
-            #Site Manager"),
+        h2("Site Manager"),
 
         selectInput("color", "Color", vars),
         selectInput("size", "Size", vars, selected = "adultpop"),
