@@ -1,7 +1,7 @@
 library(dplyr)
 
 bigset<- readRDS("data/superzip.rds")
-allzips<-bigset[1:93]
+allzips<-bigset[1:93,]
 ourdata <- read.csv("data/gauge_locations.csv")
 allzips$latitude <- ourdata$latitude
 allzips$longitude <- ourdata$longitude
