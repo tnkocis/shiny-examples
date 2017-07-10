@@ -9,7 +9,7 @@ allzips$college <- allzips$college * 100
 allzips$zipcode <- as.char(allzups$zipcode)
 #formatC(allzips$zipcode, width=7, format="d", flag="0")
 # try as.char
-#row.names(allzips) <- allzips$zipcode
+row.names(allzips) <- allzips$zipcode
 
 cleantable <- allzips %>%
   select(
