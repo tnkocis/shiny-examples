@@ -103,7 +103,7 @@ function(input, output, session) {
     content <- as.character(tagList(
       tags$h4("Site Number:", as.integer(selectedZip$zipcode)),
       tags$br(),
-      sprintf("Station Name: %s", selectedZip$income), tags$br(),
+      sprintf("Station Name: %s", selectedZip$statname), tags$br(),
       sprintf("Longitude: %s", selectedZip$longitude), tags$br(),
       sprintf("Latitude: %s", selectedZip$latitude)
     ))
