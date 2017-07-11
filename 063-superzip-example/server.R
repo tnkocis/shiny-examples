@@ -31,10 +31,10 @@ function(input, output, session) {
     if (is.null(input$map_bounds))
       return(zipdata[FALSE,])
     bounds <- input$map_bounds
-    #latRng <- range(bounds$north, bounds$south)
-    #lngRng <- range(bounds$east, bounds$west)
-    latRng <- range(35.52079,40.60098)
-    lngRng <- range(-118.173689,-122.8436046)
+    latRng <- range(bounds$north, bounds$south)
+    lngRng <- range(bounds$east, bounds$west)
+    #latRng <- range(35.52079,40.60098)
+    #lngRng <- range(-118.173689,-122.8436046)
     
     subset(zipdata,
       latitude >= latRng[1] & latitude <= latRng[2] &
@@ -104,7 +104,7 @@ function(input, output, session) {
       tags$h4("Site Number:", as.integer(selectedZip$zipcode)),
       tags$br(),
       sprintf("Station Name: %s", dollar(selectedZip$income * 1000)), tags$br(),
-      sprintf("Longitude: %s%%", selectedZip$longitude), tags$br(),
+      sprintf("Longitude: %s%", selectedZip$longitude), tags$br(),
       sprintf("Latitude: %s", selectedZip$latitude)
     ))
     leafletProxy("map") %>% addPopups(lng, lat, content, layerId = zipcode)
