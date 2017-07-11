@@ -6,6 +6,7 @@ ourdata <- read.csv("data/gauge_locations.csv")
 allzips$latitude <- ourdata$latitude
 allzips$longitude <- ourdata$longitude
 allzips$zipcode <- ourdata$site_no
+allzips$statname <- ourdata$station_nm
 allzips$college <- allzips$college * 100
 allzips$zipcode <- formatC(allzips$zipcode, width=7, format="d", flag="0")
 # try as.char
