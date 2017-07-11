@@ -102,10 +102,7 @@ function(input, output, session) {
     selectedZip <- allzips[allzips$zipcode == zipcode,]
     content <- as.character(tagList(
       tags$h4("Site Number:", as.integer(selectedZip$zipcode)),
-      tags$strong(HTML(sprintf("%s, %s",
-        selectedZip$latitude, selectedZip$longitude
-      ))), tags$br(),
-      # where median household income used to be
+      tags$br(),
       sprintf("Station Name: %s", dollar(selectedZip$income * 1000)), tags$br(),
       sprintf("Longitude: %s%%", selectedZip$longitude), tags$br(),
       sprintf("Latitude: %s", selectedZip$latitude)
