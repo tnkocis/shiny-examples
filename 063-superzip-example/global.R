@@ -3,8 +3,8 @@ library(dplyr)
 bigset<- readRDS("data/superzip.rds")
 allzips<-bigset[1:93,]
 ourdata <- read.csv("data/gauge_locations.csv")
-allzips$latitude <- ourdata$latitude
-allzips$longitude <- ourdata$longitude
+allzips$latitude <- ourdata$dec_lat_va
+allzips$longitude <- ourdata$dec_long_v
 allzips$zipcode <- ourdata$site_no
 allzips$statname <- ourdata$station_nm
 allzips$college <- allzips$college * 100
