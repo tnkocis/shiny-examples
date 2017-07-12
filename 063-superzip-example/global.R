@@ -13,6 +13,10 @@ allzips$longitude <- gauge_data$dec_long_v
 # subset data 
 # FULL VOL
 redo_full_vol <- read.csv("data/redo_simp_data_full_vol_90.csv")
+redo_full_vol_all <- subset(redo_full_vol, redo_full_vol$yeartype == "all")
+redo_full_vol_all_April <- subset(redo_full_vol_all, redo_full_vol_all$period == "April")
+allzips$avg <- redo_full_vol_all_April$avg
+allzips$sd <- redo_full_vol_all_April$sd
 
 # IMP VOL
 redo_imp_vol <- read.csv("data/redo_simp_data_imp_vol_90.csv")
