@@ -2,7 +2,7 @@ library(leaflet)
 
 # Choices for drop-downs
 vars <- c(
-  "Magnitude" = "superzip",
+  "Magnitude" = "avg",
   "Duration" = "centile",
   "Inter-Annual Frequency" = "college",
   "Intra-Annual Frequency" = "income",
