@@ -35,5 +35,5 @@ cleantable <- allzips %>%
     Superzip = superzip,
     Population = adultpop,
     College = college,
-    Income = income,
+    Income = income
   )
