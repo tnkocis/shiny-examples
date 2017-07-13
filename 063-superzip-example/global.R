@@ -36,6 +36,4 @@ cleantable <- allzips %>%
     Population = adultpop,
     College = college,
     Income = income,
-    Lat = latitude,
-    Long = longitude
   )
