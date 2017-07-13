@@ -4,12 +4,6 @@ library(scales)
 library(lattice)
 library(dplyr)
 
-# Leaflet bindings are a bit slow; for now we'll just sample to compensate
-#set.seed(10)
-#zipdata <- allzips[sample.int(nrow(allzips), 93),]
-# By ordering by centile, we ensure that the (comparatively rare) SuperZIPs
-# will be drawn last and thus be easier to see
-#zipdata <- zipdata[order(zipdata$centile),]
 zipdata <- allzips
 
 function(input, output, session) {
@@ -34,8 +28,6 @@ function(input, output, session) {
     bounds <- input$map_bounds
     latRng <- range(bounds$north, bounds$south)
     lngRng <- range(bounds$east, bounds$west)
-    #latRng <- range(35.52079,40.60098)
-    #lngRng <- range(-118.173689,-122.8436046)
     
     subset(zipdata,
       latitude >= latRng[1] & latitude <= latRng[2] &
@@ -83,7 +75,7 @@ function(input, output, session) {
       pal <- colorBin("viridis", colorData, 7, pretty = FALSE)
     }
 
-    if (sizeBy == "superzip") {
+    if (sizeBy == "avg") {
       # Radius is treated specially in the "superzip" case.
       radius <- ifelse(zipdata$centile >= (100 - input$threshold), 30000, 3000)
     } else {
