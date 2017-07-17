@@ -98,7 +98,8 @@ function(input, output, session) {
       tags$br(),
       sprintf("Station Name: %s", selectedZip$statname), tags$br(),
       sprintf("Longitude: %s", selectedZip$longitude), tags$br(),
-      sprintf("Latitude: %s", selectedZip$latitude)
+      sprintf("Latitude: %s", selectedZip$latitude), tags$br(),
+      sprintf("Status: Impaired or Unimpaired")]
     ))
     leafletProxy("map") %>% addPopups(lng, lat, content, layerId = zipcode)
   }
