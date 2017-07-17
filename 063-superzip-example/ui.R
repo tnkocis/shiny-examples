@@ -4,7 +4,7 @@ library(leaflet)
 site_type <- c(
   "Impaired" = "impaired",
   "Unimpaired" = "unimpaired",
-  "Full" = "full"
+  "All Sites" = "full"
 )
 
 vars <- c(
@@ -35,8 +35,9 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
 
         h2("Site Manager"),
         selectInput("sites", "Sites Included", site_type),
-        selectInput("color", "Color", vars),
-        selectInput("size", "Size", vars, selected = "adultpop"),
+		selectInput("metric", "Metric", vars),
+#        selectInput("color", "Color", vars),
+#        selectInput("size", "Size", vars, selected = "adultpop"),
         conditionalPanel("input.color == 'avg' || input.size == 'avg'",
           # Only prompt for threshold when coloring or sizing by superzip
           numericInput("threshold", "SuperZIP threshold (top n percentile)", 5)
