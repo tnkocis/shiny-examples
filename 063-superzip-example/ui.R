@@ -1,6 +1,12 @@
 library(leaflet)
 
 # Choices for drop-downs
+site_type <- c(
+  "Impaired" = "impaired",
+  "Unimpaired" = "unimpaired",
+  "Full" = "full"
+)
+
 vars <- c(
   "Magnitude" = "avg",
   "Duration" = "centile",
@@ -8,7 +14,6 @@ vars <- c(
   "Intra-Annual Frequency" = "income",
   "Timing" = "adultpop"
 )
-
 
 navbarPage("Availability of high-magnitude streamflow for groundwater banking in the Central Valley, California", id="nav",
 
@@ -29,7 +34,7 @@ navbarPage("Availability of high-magnitude streamflow for groundwater banking in
         width = 330, height = "auto",
 
         h2("Site Manager"),
-
+        selectInput("sites", "Sites Included", site_type),
         selectInput("color", "Color", vars),
         selectInput("size", "Size", vars, selected = "adultpop"),
         conditionalPanel("input.color == 'superzip' || input.size == 'superzip'",
