@@ -1,86 +1,120 @@
+###bus code
+library(shinydashboard)
 library(leaflet)
-
+#
 # Choices for drop-downs
 site_type <- c(
-  "Impaired" = "impaired",
-  "Unimpaired" = "unimpaired",
-  "All Sites" = "full"
+		"Impaired" = "impaired",
+		"Unimpaired" = "unimpaired",
+		"All Sites" = "full"
 )
 
 vars <- c(
-  "Magnitude" = "avg",
-  "Duration" = "centile",
-  "Inter-Annual Frequency" = "college",
-  "Intra-Annual Frequency" = "income",
-  "Timing" = "adultpop"
+		"Magnitude" = "avg",
+		"Duration" = "centile",
+		"Inter-Annual Frequency" = "college",
+		"Intra-Annual Frequency" = "income",
+		"Timing" = "adultpop"
 )
 
-navbarPage("Availability of high-magnitude streamflow for groundwater banking in the Central Valley, California", id="nav",
-
-  tabPanel("Interactive map",
-    div(class="outer",
-
-      tags$head(
-        # Include our custom CSS
-        includeCSS("styles.css"),
-        includeScript("gomap.js")
-      ),
-
-      leafletOutput("map", width="100%", height="100%"),
-
-      # Shiny versions prior to 0.11 should use class="modal" instead.
-      absolutePanel(id = "controls", class = "panel panel-default", fixed = TRUE,
-        draggable = TRUE, top = 60, left = "auto", right = 20, bottom = "auto",
-        width = 330, height = "auto",
-
-        h2("Site Manager"),
-        selectInput("sites", "Sites Included", site_type),
-		selectInput("metric", "Metric", vars),
-#        selectInput("color", "Color", vars),
-#        selectInput("size", "Size", vars, selected = "adultpop"),
-        conditionalPanel("input.color == 'avg' || input.size == 'avg'",
-          # Only prompt for threshold when coloring or sizing by superzip
-          numericInput("threshold", "SuperZIP threshold (top n percentile)", 5)
-        ),
-
-        plotOutput("histCentile", height = 200),
-        plotOutput("scatterCollegeIncome", height = 250),
-        resize = "both"
-      ),
-
-      tags$div(id="cite",
-        'Data compiled for ', tags$em('UC Davis Depart of Land, Air and Water Resource, 2017') 
-      )  
-    )
-  ),
-
-  tabPanel("Data explorer",
-    fluidRow(
-      column(3,
-        selectInput("states", "States", c("All sites"="", structure(state.abb, names=state.name), "Washington, DC"="DC"), multiple=TRUE)
-      ),
-      column(3,
-        conditionalPanel("input.states",
-          selectInput("cities", "Cities", c("All cities"=""), multiple=TRUE)
-        )
-      ),
-      column(3,
-        conditionalPanel("input.states",
-          selectInput("zipcodes", "Zipcodes", c("All zipcodes"=""), multiple=TRUE)
-        )
-      )
-    ),
-    fluidRow(
-      column(1,
-        numericInput("minScore", "Min score", min=0, max=100, value=0)
-      ),
-      column(1,
-        numericInput("maxScore", "Max score", min=0, max=100, value=100)
-      )
-    ),
-    hr(),
-    DT::dataTableOutput("ziptable")
-  ),
-
-  conditionalPanel("false", icon("crosshair"))
+header <- dashboardHeader(titleWidth=150,
+		title = "Menu"#,
+#		tags$li(class = "dropdown",
+#				tags$p(div("Availability of High-magnitude Streamflow for Groundwater Banking", 
+#				style="text-align:center;white-space: normal; word-wrap: break-word;"))
+#		)
 )
+
+sidebar <- dashboardSidebar(width=150,
+			sidebarMenu(
+					menuItem("Interactive Map", tabName="interactivemap", icon=icon("globe")),
+					menuItem("Data Explorer", tabName = "dataexplorer", icon=icon("info-circle"))
+				)
+			)
+bodies <- dashboardBody( 
+				tags$script(HTML('
+										$(document).ready(function() {
+										$("header").find("nav").append(\'<div class="myClass"> Availability of High-magnitude Streamflow for Groundwater Banking </div>\');
+										})
+										')),
+		tabItems(
+			tabItem(tabName="interactivemap",
+#					fluidRow(column(width=12,
+#							infoBox(div("Availability of high-magnitude streamflow for groundwater banking in the Central Valley, CA",
+#											style = "white-space: normal; word-wrap: break-word"), 
+#									value = NULL,
+#									subtitle="Interactive Map",
+#									icon = shiny::icon("globe"), color = "aqua", width = NULL,
+#									href = NULL, fill = FALSE) 
+#							)),
+#					
+					fluidRow(
+							column(width=6,
+									box(width=NULL, height=NULL,
+									tags$head(
+# Include our custom CSS
+											includeCSS("styles.css"),
+											includeScript("gomap.js")
+									),
+									tags$style(type = "text/css", "#map {height: calc(100vh - 100px) !important;}"),
+									
+									leafletOutput("map")
+									
+							)
+					),
+					column(width=3,
+							box(width=NULL,
+								selectInput("sites", "Sites Included", site_type),
+								selectInput("metric", "Metric", vars)
+						)
+						)
+			)
+				),
+			tabItem(tabName= "dataexplorer",
+#					fluidRow(column(width=12,
+#									infoBox(div("Availability of high-magnitude streamflow for groundwater banking in the Central Valley, CA",
+#													style = "white-space: normal; word-wrap: break-word"), 
+#											value = NULL,
+#											subtitle="Data Explorer",
+#											icon = shiny::icon("info-circle"), color = "aqua", width = NULL,
+#											href = NULL, fill = FALSE) 
+#							)),
+					fluidRow(
+							column(3,
+									selectInput("states", "States", c("All sites"="", structure(state.abb, names=state.name), "Washington, DC"="DC"), multiple=TRUE)
+							),
+							column(3,
+									conditionalPanel("input.states",
+											selectInput("cities", "Cities", c("All cities"=""), multiple=TRUE)
+									)
+							),
+							column(3,
+									conditionalPanel("input.states",
+											selectInput("zipcodes", "Zipcodes", c("All zipcodes"=""), multiple=TRUE)
+									)
+							)
+					),
+					fluidRow(
+							column(1,
+									numericInput("minScore", "Min score", min=0, max=100, value=0)
+							),
+							column(1,
+									numericInput("maxScore", "Max score", min=0, max=100, value=100)
+							)
+					),
+					hr(),
+					DT::dataTableOutput("ziptable")
+			)
+		)
+
+)
+
+dashboardPage(
+		title="Flow Availability",
+		header=header,
+		sidebar=sidebar,
+		body=bodies,
+		skin="black"
+)
+
+
