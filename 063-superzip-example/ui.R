@@ -2,20 +2,7 @@
 library(shinydashboard)
 library(leaflet)
 #
-# Choices for drop-downs
-site_type <- c(
-		"Impaired" = "impaired",
-		"Unimpaired" = "unimpaired",
-		"All Sites" = "full"
-)
 
-vars <- c(
-		"Magnitude" = "avg",
-		"Duration" = "centile",
-		"Inter-Annual Frequency" = "college",
-		"Intra-Annual Frequency" = "income",
-		"Timing" = "adultpop"
-)
 
 header <- dashboardHeader(titleWidth=150,
 		title = "Menu"#,
@@ -48,27 +35,46 @@ bodies <- dashboardBody(
 #									href = NULL, fill = FALSE) 
 #							)),
 #					
-					fluidRow(
-							column(width=6,
-									box(width=NULL, height=NULL,
-									tags$head(
+				fluidRow(
+					column(width=6,
+							box(width=NULL, height=NULL,
+							tags$head(
 # Include our custom CSS
-											includeCSS("styles.css"),
-											includeScript("gomap.js")
-									),
-									tags$style(type = "text/css", "#map {height: calc(100vh - 100px) !important;}"),
-									
-									leafletOutput("map")
-									
+									includeCSS("styles.css"),
+									includeScript("gomap.js")
+							),
+							tags$style(type = "text/css", "#map {height: calc(100vh - 100px) !important;}"),
+							
+							leafletOutput("map")
+							
 							)
-					),
-					column(width=3,
-							box(width=NULL,
-								selectInput("sites", "Sites Included", site_type),
-								selectInput("metric", "Metric", vars)
+						),
+					column(width=6,
+							fluidRow(tags$head(tags$style(HTML('
+																	.form-group, .selectize-control {
+																	margin-bottom: 5px;
+																	}'))), 
+									div(
+									column(width=12,
+											box(id="selectbox",width=NULL, #collapsible=TRUE,
+#													selectInput("sites", "Site Type", site_type),
+													selectInput("metric", "Metric", vars),
+													selectInput("record","Record Length", record_length),
+													selectInput("period","Time Period", period),
+													selectInput("site","Site Selection", sites)
+#													selectInput("yeartype", "Year Type", yeartype)
+												)
+										
+									), style="font-size:small;")),
+							fluidRow(column(width=12,
+											box(width=NULL,
+													tags$style(type = "text/css", "#testplot {height: calc(100vh - 410px) !important;}"),
+													plotOutput("testplot")
+											)
+										)
+									)
+							)
 						)
-						)
-			)
 				),
 			tabItem(tabName= "dataexplorer",
 #					fluidRow(column(width=12,

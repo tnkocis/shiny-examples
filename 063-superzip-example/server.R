@@ -126,6 +126,11 @@ library(gplots)
     })
   })
 
+library(ggplot2)
+testdf <- data.frame(x=seq(1,10,1),y=c(1,6,8,10,14,12,6,9,10,9))
+output$testplot <- renderPlot({
+			ggplot(testdf, aes(x=x, y=y)) + geom_line()
+		})
 
 #  ## Data Explorer ###########################################
 #

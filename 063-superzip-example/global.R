@@ -40,3 +40,45 @@ cleantable <- allzips %>%
     College = college,
     Income = income
   )
+
+sites <- paste("USGS ", allzips$zipcode, ", ", allzips$statname, sep="")
+site_type <- c(
+		"Impaired" = "impaired",
+		"Unimpaired" = "unimpaired",
+		"All Sites" = "full"
+)
+
+record_length <- c(
+		"full record" = "full",
+		"post-impairment record" = "post"
+)
+
+vars <- c(
+		"Magnitude" = "avg",
+		"Duration" = "centile",
+		"Inter-Annual Frequency" = "college",
+		"Intra-Annual Frequency" = "income",
+		"Timing" = "adultpop"
+)
+
+period <- c(
+		"November to April" = "mon6",
+		"December to February" = "mon3",
+		"Hydrologic Year" ="hy",
+		"November" = "nov",
+		"December" = "dec",
+		"January" = "jan",
+		"Febraury" = "feb",
+		"March" = "mar",
+		"April" = "apr"
+
+)
+
+#yeartype <- c(
+#		"All year types" = "all",
+#		"Wet years" = "W",
+#		"Above Normal years" = "AN",
+#		"Below Normal years" = "BN",
+#		"Dry years" = "D",
+#		"Critically dry years" = "C"
+#		)
