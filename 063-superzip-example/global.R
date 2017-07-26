@@ -74,11 +74,11 @@ period <- c(
 
 )
 
-#yeartype <- c(
-#		"All year types" = "all",
-#		"Wet years" = "W",
-#		"Above Normal years" = "AN",
-#		"Below Normal years" = "BN",
-#		"Dry years" = "D",
-#		"Critically dry years" = "C"
-#		)
+yeartype <- c(
+		"All year types" = "all",
+		"Wet years" = "W",
+		"Above Normal years" = "AN",
+		"Below Normal years" = "BN",
+		"Dry years" = "D",
+		"Critically dry years" = "C"
+		)
